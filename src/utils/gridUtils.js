@@ -10,10 +10,10 @@ export const getInitialGrid = () => {
   return grid;
 };
 
-const START_NODE_ROW = 10;
-const START_NODE_COL = 15;
-const FINISH_NODE_ROW = 10;
-const FINISH_NODE_COL = 35;
+const START_NODE_ROW = 3;
+const START_NODE_COL = 9;
+const FINISH_NODE_ROW = 9;
+const FINISH_NODE_COL = 49;
 
 const createNode = (col, row) => {
   return {
@@ -21,5 +21,9 @@ const createNode = (col, row) => {
     row,
     isStart: row === START_NODE_ROW && col === START_NODE_COL,
     isFinish: row === FINISH_NODE_ROW && col === FINISH_NODE_COL,
+    distance: Infinity,
+    isVisited: false,
+    isWall: false,
+    previousNode: null,
   };
 };

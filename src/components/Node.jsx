@@ -1,8 +1,10 @@
-const Node = ({ col, row, isStart, isFinish }) => {
+const Node = ({ col, row, isStart, isFinish, isWall }) => {
   const extraClassName = isStart
     ? 'bg-green-500'
     : isFinish
     ? 'bg-red-500'
+    : isWall
+    ? 'bg-gray-500'
     : '';
 
   return (
