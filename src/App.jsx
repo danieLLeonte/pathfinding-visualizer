@@ -2,20 +2,42 @@ import { useState } from "react";
 
 import "./App.css";
 
-import { getInitialGrid } from "./utils/gridUtils";
+import { getInitialGrid, getNewGridWithWallToggled } from "./utils/gridUtils";
 import Grid from "./components/Grid";
 import Navbar from "./components/Navbar";
 
-const START_NODE = { ROW: 19, COL: 9 };
-const FINISH_NODE = { ROW: 10, COL: 39 };
+const START_NODE = { ROW: 9, COL: 9 };
+const FINISH_NODE = { ROW: 9, COL: 40 };
 
 const App = () => {
   const [grid, setGrid] = useState(getInitialGrid(START_NODE, FINISH_NODE));
+  const [mouseIsPressed, setMouseIsPressed] = useState(false);
+
+  const handleMouseDown = (row, col) => {
+    const newGrid = getNewGridWithWallToggled(grid, row, col);
+    setGrid(newGrid);
+    setMouseIsPressed(true);
+  };
+
+  const handleMouseEnter = (row, col) => {
+    if (!mouseIsPressed) return;
+    const newGrid = getNewGridWithWallToggled(grid, row, col);
+    setGrid(newGrid);
+  };
+
+  const handleMouseUp = () => {
+    setMouseIsPressed(false);
+  };
 
   return (
     <>
       <Navbar grid={grid} START_NODE={START_NODE} FINISH_NODE={FINISH_NODE} />
-      <Grid grid={grid} />
+      <Grid
+        grid={grid}
+        handleMouseDown={handleMouseDown}
+        handleMouseEnter={handleMouseEnter}
+        handleMouseUp={handleMouseUp}
+      />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { visualizeDijkstra } from "../algorithms/dijkstra/dijkstraAnimation";
+import { visualizeDijkstra } from "../algorithms/dijkstra/animation";
 
 const Navbar = ({ grid, START_NODE, FINISH_NODE }) => {
   return (
