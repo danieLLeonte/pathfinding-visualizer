@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import "./App.css";
 
@@ -10,22 +10,11 @@ const START_NODE = { ROW: 19, COL: 9 };
 const FINISH_NODE = { ROW: 10, COL: 39 };
 
 const App = () => {
-  const [grid, setGrid] = useState([]);
-
-  useEffect(() => {
-    setGrid(
-      getInitialGrid(
-        START_NODE.ROW,
-        START_NODE.COL,
-        FINISH_NODE.ROW,
-        FINISH_NODE.COL
-      )
-    );
-  }, []);
+  const [grid, setGrid] = useState(getInitialGrid(START_NODE, FINISH_NODE));
 
   return (
     <>
-      <Navbar grid={grid} />
+      <Navbar grid={grid} START_NODE={START_NODE} FINISH_NODE={FINISH_NODE} />
       <Grid grid={grid} />
     </>
   );

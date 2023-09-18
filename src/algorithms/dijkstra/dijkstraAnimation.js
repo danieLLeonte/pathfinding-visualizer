@@ -1,8 +1,5 @@
 import { dijkstra, getNodesInShortestPathOrder } from "./dijkstra";
 
-const START_NODE = { ROW: 19, COL: 9 };
-const FINISH_NODE = { ROW: 10, COL: 39 };
-
 const animateDijkstra = (visitedNodesInOrder, nodesInShortestPathOrder) => {
   for (let i = 0; i <= visitedNodesInOrder.length; i++) {
     if (i === visitedNodesInOrder.length) {
@@ -30,7 +27,7 @@ const animateShortestPath = (nodesInShortestPathOrder) => {
   }
 };
 
-export const visualizeDijkstra = (grid) => {
+export const visualizeDijkstra = (grid, START_NODE, FINISH_NODE) => {
   const startNode = grid[START_NODE.ROW][START_NODE.COL];
   const finishNode = grid[FINISH_NODE.ROW][FINISH_NODE.COL];
   const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
