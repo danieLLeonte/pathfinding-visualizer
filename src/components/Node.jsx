@@ -1,20 +1,22 @@
-const Node = ({
-  col,
-  row,
-  isStart,
-  isFinish,
-  isWall,
-  onMouseDown,
-  onMouseEnter,
-  onMouseUp,
-}) => {
-  const extraClassName = isStart
-    ? "bg-green-500"
-    : isFinish
-    ? "bg-red-500"
-    : isWall
-    ? "bg-gray-500"
-    : "";
+const Node = ({ col, row, status, onMouseDown, onMouseEnter, onMouseUp }) => {
+  const getStatusClass = (status) => {
+    switch (status) {
+      case "start":
+        return "bg-green-500";
+      case "finish":
+        return "bg-red-500";
+      case "visited":
+        return "bg-yellow-500";
+      case "shortest-path":
+        return "bg-green-600";
+      case "wall":
+        return "bg-gray-500";
+      default:
+        return "";
+    }
+  };
+
+  const extraClassName = getStatusClass(status);
 
   return (
     <div

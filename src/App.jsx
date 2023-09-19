@@ -31,7 +31,12 @@ const App = () => {
 
   return (
     <>
-      <Navbar grid={grid} START_NODE={START_NODE} FINISH_NODE={FINISH_NODE} />
+      <Navbar
+        grid={grid}
+        setGrid={setGrid}
+        START_NODE={START_NODE}
+        FINISH_NODE={FINISH_NODE}
+      />
       <Grid
         grid={grid}
         handleMouseDown={handleMouseDown}

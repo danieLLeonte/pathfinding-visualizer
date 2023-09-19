@@ -3,15 +3,13 @@ import Node from "./Node";
 const Row = ({ row, handleMouseDown, handleMouseEnter, handleMouseUp }) => (
   <div className="flex">
     {row.map((node, nodeIdx) => {
-      const { row, col, isStart, isFinish, isWall } = node;
+      const { row, col, status } = node;
       return (
         <Node
           key={nodeIdx}
           col={col}
           row={row}
-          isStart={isStart}
-          isFinish={isFinish}
-          isWall={isWall}
+          status={status}
           onMouseDown={handleMouseDown}
           onMouseEnter={handleMouseEnter}
           onMouseUp={handleMouseUp}

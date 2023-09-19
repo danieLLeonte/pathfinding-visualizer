@@ -14,11 +14,14 @@ const createNode = (col, row, START_NODE, FINISH_NODE) => {
   return {
     col,
     row,
-    isStart: row === START_NODE.ROW && col === START_NODE.COL,
-    isFinish: row === FINISH_NODE.ROW && col === FINISH_NODE.COL,
+    status:
+      row === START_NODE.ROW && col === START_NODE.COL
+        ? "start"
+        : row === FINISH_NODE.ROW && col === FINISH_NODE.COL
+        ? "finish"
+        : "unvisited",
     distance: Infinity,
     isVisited: false,
-    isWall: false,
     previousNode: null,
   };
 };
@@ -26,9 +29,10 @@ const createNode = (col, row, START_NODE, FINISH_NODE) => {
 export const getNewGridWithWallToggled = (grid, row, col) => {
   const newGrid = grid.slice();
   const node = newGrid[row][col];
+  if (node.status === "start" || node.status === "finish") return newGrid;
   const newNode = {
     ...node,
-    isWall: !node.isWall,
+    status: node.status === "wall" ? "unvisited" : "wall",
   };
   newGrid[row][col] = newNode;
   return newGrid;
