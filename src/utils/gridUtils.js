@@ -5,6 +5,21 @@ const gridHeight = 32;
 const rows = Math.floor(windowHeight / gridHeight - 8);
 const cols = Math.floor(windowWidth / gridWidth - 1);
 
+export const getStartNode = () => {
+  return {
+    ROW: Math.floor(rows / 2),
+    COL: Math.floor(cols / 4),
+  };
+};
+
+export const getFinishNode = () => {
+  return {
+    ROW: Math.floor(rows / 2),
+    COL: Math.floor((3 * cols) / 4),
+  };
+};
+
+
 export const getInitialGrid = (START_NODE, FINISH_NODE, oldGrid = null) => {
   const grid = [];
   for (let row = 0; row < rows; row++) {

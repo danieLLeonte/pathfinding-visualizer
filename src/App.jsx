@@ -2,12 +2,17 @@ import { useState } from "react";
 
 import "./App.css";
 
-import { getInitialGrid, getNewGridWithWallToggled } from "./utils/gridUtils";
+import {
+  getFinishNode,
+  getInitialGrid,
+  getNewGridWithWallToggled,
+  getStartNode,
+} from "./utils/gridUtils";
 import Grid from "./components/Grid";
 import Navbar from "./components/Navbar";
 
-const START_NODE = { ROW: 9, COL: 9 };
-const FINISH_NODE = { ROW: 9, COL: 40 };
+const START_NODE = getStartNode();
+const FINISH_NODE = getFinishNode();
 
 const App = () => {
   const [grid, setGrid] = useState(getInitialGrid(START_NODE, FINISH_NODE));
