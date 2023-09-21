@@ -19,7 +19,6 @@ export const getFinishNode = () => {
   };
 };
 
-
 export const getInitialGrid = (START_NODE, FINISH_NODE, oldGrid = null) => {
   const grid = [];
   for (let row = 0; row < rows; row++) {
@@ -60,4 +59,10 @@ export const getNewGridWithWallToggled = (grid, row, col) => {
   };
   newGrid[row][col] = newNode;
   return newGrid;
+};
+
+export const clearBoard = (setGrid, isVisualizing) => {
+  if (isVisualizing) return;
+  const newGrid = getInitialGrid(getStartNode(), getFinishNode());
+  setGrid(newGrid);
 };
