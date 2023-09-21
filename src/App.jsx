@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import "./App.css";
 
 import {
@@ -18,6 +17,13 @@ const App = () => {
   const [grid, setGrid] = useState(getInitialGrid(START_NODE, FINISH_NODE));
   const [mouseIsPressed, setMouseIsPressed] = useState(false);
   const [isVisualizing, setIsVisualizing] = useState(false);
+
+  const resetAllStates = () => {
+    if (isVisualizing) return;
+    setGrid(getInitialGrid(START_NODE, FINISH_NODE));
+    setMouseIsPressed(false);
+    setIsVisualizing(false);
+  };
 
   const handleMouseDown = (row, col) => {
     const newGrid = getNewGridWithWallToggled(grid, row, col);
@@ -44,6 +50,7 @@ const App = () => {
         FINISH_NODE={FINISH_NODE}
         isVisualizing={isVisualizing}
         setIsVisualizing={setIsVisualizing}
+        resetAllStates={resetAllStates}
       />
       <Grid
         grid={grid}

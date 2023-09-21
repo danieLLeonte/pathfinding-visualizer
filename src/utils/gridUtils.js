@@ -60,9 +60,3 @@ export const getNewGridWithWallToggled = (grid, row, col) => {
   newGrid[row][col] = newNode;
   return newGrid;
 };
-
-export const clearBoard = (setGrid, isVisualizing) => {
-  if (isVisualizing) return;
-  const newGrid = getInitialGrid(getStartNode(), getFinishNode());
-  setGrid(newGrid);
-};
