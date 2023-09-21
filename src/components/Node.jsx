@@ -16,7 +16,7 @@ const Node = ({
       case "visited":
         return "bg-yellow-500";
       case "shortest-path":
-        return "bg-green-600";
+        return "bg-blue-500";
       case "wall":
         return "bg-gray-500";
       default:

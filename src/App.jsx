@@ -82,13 +82,17 @@ const App = () => {
         setIsVisualizing={setIsVisualizing}
         resetAllStates={resetAllStates}
       />
-      <Grid
-        grid={grid}
-        handleMouseDown={handleMouseDown}
-        handleMouseEnter={handleMouseEnter}
-        handleMouseUp={handleMouseUp}
-        isVisualizing={isVisualizing}
-      />
+      <div
+        onMouseLeave={handleMouseUp}
+      >
+        <Grid
+          grid={grid}
+          handleMouseDown={handleMouseDown}
+          handleMouseEnter={handleMouseEnter}
+          handleMouseUp={handleMouseUp}
+          isVisualizing={isVisualizing}
+        />
+      </div>
     </>
   );
 };
