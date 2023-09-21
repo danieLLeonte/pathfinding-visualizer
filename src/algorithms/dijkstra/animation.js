@@ -81,8 +81,8 @@ export const visualizeDijkstra = (
     setGrid(newGrid);
     wasVisualized = false;
   }
-  const startNode = grid[START_NODE.ROW][START_NODE.COL];
-  const finishNode = grid[FINISH_NODE.ROW][FINISH_NODE.COL];
+  const startNode = grid[START_NODE.row][START_NODE.col];
+  const finishNode = grid[FINISH_NODE.row][FINISH_NODE.col];
   const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
   const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
   animateDijkstra(

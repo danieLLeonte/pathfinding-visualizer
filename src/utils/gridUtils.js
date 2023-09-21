@@ -7,15 +7,15 @@ const cols = Math.floor(windowWidth / gridWidth - 1);
 
 export const getStartNode = () => {
   return {
-    ROW: Math.floor(rows / 2),
-    COL: Math.floor(cols / 4),
+    row: Math.floor(rows / 2),
+    col: Math.floor(cols / 4),
   };
 };
 
 export const getFinishNode = () => {
   return {
-    ROW: Math.floor(rows / 2),
-    COL: Math.floor((3 * cols) / 4),
+    row: Math.floor(rows / 2),
+    col: Math.floor((3 * cols) / 4),
   };
 };
 
@@ -31,14 +31,14 @@ export const getInitialGrid = (START_NODE, FINISH_NODE, oldGrid = null) => {
   return grid;
 };
 
-const createNode = (col, row, START_NODE, FINISH_NODE, oldGrid) => {
+const createNode = (col, row, START_NODE, FINISH_NODE, oldGrid = null) => {
   return {
     col,
     row,
     status:
-      row === START_NODE.ROW && col === START_NODE.COL
+      row === START_NODE.row && col === START_NODE.col
         ? "start"
-        : row === FINISH_NODE.ROW && col === FINISH_NODE.COL
+        : row === FINISH_NODE.row && col === FINISH_NODE.col
         ? "finish"
         : oldGrid && oldGrid[row][col].status === "wall"
         ? "wall"
