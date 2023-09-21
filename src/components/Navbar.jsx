@@ -20,7 +20,7 @@ const Navbar = ({
           setIsVisualizing
         )
       }
-      className="m-2"
+      className="m-4"
     >
       Visualize Dijkstra&apos;s Algorithm
     </button>

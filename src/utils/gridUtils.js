@@ -1,8 +1,15 @@
+const windowWidth = window.innerWidth;
+const windowHeight = window.innerHeight;
+const gridWidth = 32;
+const gridHeight = 32;
+const rows = Math.floor(windowHeight / gridHeight - 8);
+const cols = Math.floor(windowWidth / gridWidth - 1);
+
 export const getInitialGrid = (START_NODE, FINISH_NODE, oldGrid = null) => {
   const grid = [];
-  for (let row = 0; row < 20; row++) {
+  for (let row = 0; row < rows; row++) {
     const currentRow = [];
-    for (let col = 0; col < 50; col++) {
+    for (let col = 0; col < cols; col++) {
       currentRow.push(createNode(col, row, START_NODE, FINISH_NODE, oldGrid));
     }
     grid.push(currentRow);
