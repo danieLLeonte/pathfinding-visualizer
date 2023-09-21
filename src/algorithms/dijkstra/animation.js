@@ -1,15 +1,24 @@
+import { getInitialGrid } from "../../utils/gridUtils";
 import { dijkstra, getNodesInShortestPathOrder } from "./algorithm";
+
+let wasVisualized = false;
 
 const animateDijkstra = (
   grid,
   setGrid,
   visitedNodesInOrder,
-  nodesInShortestPathOrder
+  nodesInShortestPathOrder,
+  setIsVisualizing
 ) => {
   for (let i = 0; i <= visitedNodesInOrder.length; i++) {
     setTimeout(() => {
       if (i === visitedNodesInOrder.length) {
-        animateShortestPath(grid, setGrid, nodesInShortestPathOrder);
+        animateShortestPath(
+          grid,
+          setGrid,
+          nodesInShortestPathOrder,
+          setIsVisualizing
+        );
         return;
       }
 
@@ -28,9 +37,19 @@ const animateDijkstra = (
   }
 };
 
-const animateShortestPath = (grid, setGrid, nodesInShortestPathOrder) => {
+const animateShortestPath = (
+  grid,
+  setGrid,
+  nodesInShortestPathOrder,
+  setIsVisualizing
+) => {
   for (let i = 0; i < nodesInShortestPathOrder.length; i++) {
     setTimeout(() => {
+      if (i === nodesInShortestPathOrder.length - 1) {
+        setIsVisualizing(false);
+        wasVisualized = true;
+      }
+
       const node = nodesInShortestPathOrder[i];
       if (node.status === "start" || node.status === "finish") return;
 
@@ -46,10 +65,31 @@ const animateShortestPath = (grid, setGrid, nodesInShortestPathOrder) => {
   }
 };
 
-export const visualizeDijkstra = (grid, setGrid, START_NODE, FINISH_NODE) => {
+export const visualizeDijkstra = (
+  grid,
+  setGrid,
+  START_NODE,
+  FINISH_NODE,
+  isVisualizing,
+  setIsVisualizing
+) => {
+  if (isVisualizing) return;
+  setIsVisualizing(true);
+  if (wasVisualized) {
+    const newGrid = getInitialGrid(START_NODE, FINISH_NODE, grid);
+    grid = newGrid;
+    setGrid(newGrid);
+    wasVisualized = false;
+  }
   const startNode = grid[START_NODE.ROW][START_NODE.COL];
   const finishNode = grid[FINISH_NODE.ROW][FINISH_NODE.COL];
   const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
   const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
-  animateDijkstra(grid, setGrid, visitedNodesInOrder, nodesInShortestPathOrder);
+  animateDijkstra(
+    grid,
+    setGrid,
+    visitedNodesInOrder,
+    nodesInShortestPathOrder,
+    setIsVisualizing
+  );
 };

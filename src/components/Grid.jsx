@@ -1,6 +1,12 @@
 import Node from "./Node";
 
-const Row = ({ row, handleMouseDown, handleMouseEnter, handleMouseUp }) => (
+const Row = ({
+  row,
+  handleMouseDown,
+  handleMouseEnter,
+  handleMouseUp,
+  isVisualizing,
+}) => (
   <div className="flex">
     {row.map((node, nodeIdx) => {
       const { row, col, status } = node;
@@ -13,13 +19,20 @@ const Row = ({ row, handleMouseDown, handleMouseEnter, handleMouseUp }) => (
           onMouseDown={handleMouseDown}
           onMouseEnter={handleMouseEnter}
           onMouseUp={handleMouseUp}
+          isVisualizing={isVisualizing}
         />
       );
     })}
   </div>
 );
 
-const Grid = ({ grid, handleMouseDown, handleMouseEnter, handleMouseUp }) => (
+const Grid = ({
+  grid,
+  handleMouseDown,
+  handleMouseEnter,
+  handleMouseUp,
+  isVisualizing,
+}) => (
   <div className="grid justify-center">
     {grid.map((row, rowIdx) => (
       <Row
@@ -28,6 +41,7 @@ const Grid = ({ grid, handleMouseDown, handleMouseEnter, handleMouseUp }) => (
         handleMouseDown={handleMouseDown}
         handleMouseEnter={handleMouseEnter}
         handleMouseUp={handleMouseUp}
+        isVisualizing={isVisualizing}
       />
     ))}
   </div>

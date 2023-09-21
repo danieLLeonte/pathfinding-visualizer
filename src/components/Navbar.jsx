@@ -1,9 +1,25 @@
 import { visualizeDijkstra } from "../algorithms/dijkstra/animation";
 
-const Navbar = ({ grid, setGrid, START_NODE, FINISH_NODE }) => {
+const Navbar = ({
+  grid,
+  setGrid,
+  START_NODE,
+  FINISH_NODE,
+  isVisualizing,
+  setIsVisualizing,
+}) => {
   return (
     <button
-      onClick={() => visualizeDijkstra(grid, setGrid, START_NODE, FINISH_NODE)}
+      onClick={() =>
+        visualizeDijkstra(
+          grid,
+          setGrid,
+          START_NODE,
+          FINISH_NODE,
+          isVisualizing,
+          setIsVisualizing
+        )
+      }
       className="m-2"
     >
       Visualize Dijkstra&apos;s Algorithm

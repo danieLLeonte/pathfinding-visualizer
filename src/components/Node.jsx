@@ -1,4 +1,12 @@
-const Node = ({ col, row, status, onMouseDown, onMouseEnter, onMouseUp }) => {
+const Node = ({
+  col,
+  row,
+  status,
+  onMouseDown,
+  onMouseEnter,
+  onMouseUp,
+  isVisualizing,
+}) => {
   const getStatusClass = (status) => {
     switch (status) {
       case "start":
@@ -22,9 +30,9 @@ const Node = ({ col, row, status, onMouseDown, onMouseEnter, onMouseUp }) => {
     <div
       id={`node-${row}-${col}`}
       className={`${extraClassName} border border-gray-400 w-8 h-8`}
-      onMouseDown={() => onMouseDown(row, col)}
-      onMouseEnter={() => onMouseEnter(row, col)}
-      onMouseUp={onMouseUp}
+      onMouseDown={isVisualizing ? null : () => onMouseDown(row, col)}
+      onMouseEnter={isVisualizing ? null : () => onMouseEnter(row, col)}
+      onMouseUp={isVisualizing ? null : onMouseUp}
     />
   );
 };
