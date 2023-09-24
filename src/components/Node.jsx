@@ -1,3 +1,5 @@
+import { FaWeightHanging } from "react-icons/fa";
+
 const Node = ({
   col,
   row,
@@ -19,6 +21,12 @@ const Node = ({
         return "bg-blue-500";
       case "wall":
         return "bg-gray-500";
+      case "weight":
+        return "bg-purple-500";
+      case "weight-visited":
+        return "bg-yellow-700";
+      case "weight-shortest-path":
+        return "bg-blue-700";
       default:
         return "";
     }
@@ -29,11 +37,15 @@ const Node = ({
   return (
     <div
       id={`node-${row}-${col}`}
-      className={`${extraClassName} border border-gray-400 w-8 h-8`}
+      className={`${extraClassName} border border-gray-400 w-8 h-8 flex justify-center items-center`}
       onMouseDown={isVisualizing ? null : () => onMouseDown(row, col)}
       onMouseEnter={isVisualizing ? null : () => onMouseEnter(row, col)}
       onMouseUp={isVisualizing ? null : onMouseUp}
-    />
+    >
+      {status.includes("weight") ? (
+        <FaWeightHanging className="text-white" />
+      ) : null}
+    </div>
   );
 };
 

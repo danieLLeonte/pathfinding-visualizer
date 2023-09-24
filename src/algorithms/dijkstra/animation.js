@@ -28,7 +28,7 @@ const animateDijkstra = (
       const newGrid = grid.slice();
       const newNode = {
         ...node,
-        status: "visited",
+        status: node.status === "weight" ? "weight-visited" : "visited",
       };
       newGrid[node.row][node.col] = newNode;
 
@@ -56,7 +56,8 @@ const animateShortestPath = (
       const newGrid = grid.slice();
       const newNode = {
         ...node,
-        status: "shortest-path",
+        status:
+          node.status === "weight" ? "weight-shortest-path" : "shortest-path",
       };
       newGrid[node.row][node.col] = newNode;
 

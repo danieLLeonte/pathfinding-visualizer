@@ -18,9 +18,30 @@ const App = () => {
   const [isVisualizing, setIsVisualizing] = useState(false);
   const [isStartNodeMoving, setIsStartNodeMoving] = useState(false);
   const [isFinishNodeMoving, setIsFinishNodeMoving] = useState(false);
+  const [isAddingWeights, setIsAddingWeights] = useState(false);
+
+  const handleKeyDown = (event) => {
+    if (event.key === "w") {
+      setIsAddingWeights(true);
+    }
+  };
+
+  const handleKeyUp = (event) => {
+    if (event.key === "w") {
+      setIsAddingWeights(false);
+    }
+  };
 
   useEffect(() => {
     setGrid(getInitialGrid(START_NODE, FINISH_NODE, grid));
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keyup", handleKeyUp);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keyup", handleKeyUp);
+    };
   }, [START_NODE, FINISH_NODE]);
 
   const resetAllStates = () => {
@@ -46,7 +67,7 @@ const App = () => {
       return;
     }
 
-    const newGrid = getNewGridWithWallToggled(grid, row, col);
+    const newGrid = getNewGridWithWallToggled(grid, row, col, isAddingWeights);
     setGrid(newGrid);
   };
 
@@ -61,7 +82,7 @@ const App = () => {
       return;
     }
 
-    const newGrid = getNewGridWithWallToggled(grid, row, col);
+    const newGrid = getNewGridWithWallToggled(grid, row, col, isAddingWeights);
     setGrid(newGrid);
   };
 

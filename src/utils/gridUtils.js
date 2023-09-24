@@ -32,6 +32,7 @@ export const getInitialGrid = (START_NODE, FINISH_NODE, oldGrid = null) => {
 };
 
 const createNode = (col, row, START_NODE, FINISH_NODE, oldGrid = null) => {
+  const node = oldGrid ? oldGrid[row][col] : null;
   return {
     col,
     row,
@@ -40,23 +41,34 @@ const createNode = (col, row, START_NODE, FINISH_NODE, oldGrid = null) => {
         ? "start"
         : row === FINISH_NODE.row && col === FINISH_NODE.col
         ? "finish"
-        : oldGrid && oldGrid[row][col].status === "wall"
+        : oldGrid && node.status === "wall"
         ? "wall"
+        : oldGrid && node.status.includes("weight")
+        ? "weight"
         : "unvisited",
     distance: Infinity,
+    weight: oldGrid ? node.weight : 1,
     isVisited: false,
     previousNode: null,
   };
 };
 
-export const getNewGridWithWallToggled = (grid, row, col) => {
+export const getNewGridWithWallToggled = (grid, row, col, isAddingWeights) => {
   const newGrid = grid.slice();
   const node = newGrid[row][col];
   if (node.status === "start" || node.status === "finish") return newGrid;
   const newNode = {
     ...node,
-    status: node.status === "wall" ? "unvisited" : "wall",
+    status: isAddingWeights
+      ? node.status === "weight"
+        ? "unvisited"
+        : "weight"
+      : node.status === "wall"
+      ? "unvisited"
+      : "wall",
+    weight: isAddingWeights ? 15 : 1,
   };
+
   newGrid[row][col] = newNode;
   return newGrid;
 };
