@@ -1,4 +1,6 @@
 import { FaWeightHanging } from "react-icons/fa";
+import { BsFillRocketFill } from "react-icons/bs";
+import { GiPlanetConquest } from "react-icons/gi";
 
 const Node = ({
   col,
@@ -44,6 +46,10 @@ const Node = ({
     >
       {status.includes("weight") ? (
         <FaWeightHanging className="text-white" />
+      ) : status === "start" ? (
+        <BsFillRocketFill className="text-white text-xl" />
+      ) : status === "finish" ? (
+        <GiPlanetConquest className="text-white text-2xl" />
       ) : null}
     </div>
   );
