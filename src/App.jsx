@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 
 import {
   getFinishNode,
@@ -93,7 +92,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <div className="flex flex-col gap-10">
       <Navbar
         grid={grid}
         setGrid={setGrid}
@@ -103,14 +102,16 @@ const App = () => {
         setIsVisualizing={setIsVisualizing}
         resetAllStates={resetAllStates}
       />
-      <Grid
-        grid={grid}
-        handleMouseDown={handleMouseDown}
-        handleMouseEnter={handleMouseEnter}
-        handleMouseUp={handleMouseUp}
-        isVisualizing={isVisualizing}
-      />
-    </>
+      <main>
+        <Grid
+          grid={grid}
+          handleMouseDown={handleMouseDown}
+          handleMouseEnter={handleMouseEnter}
+          handleMouseUp={handleMouseUp}
+          isVisualizing={isVisualizing}
+        />
+      </main>
+    </div>
   );
 };
 
