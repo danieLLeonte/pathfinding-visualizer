@@ -53,11 +53,17 @@ const Legend = () => (
       <div className="w-8 h-8 bg-purple-500 flex justify-center items-center">
         <FaWeightHanging className="text-white" />
       </div>
-      <p>Weight Node</p>
+      <p>
+        Weight Node
+        <span className="text-xs text-gray-500"> (Hold W and Click)</span>
+      </p>
     </div>
     <div className="flex items-center gap-2">
       <div className="w-8 h-8 bg-gray-500"></div>
-      <p>Wall Node</p>
+      <p>
+        Wall Node
+        <span className="text-xs text-gray-500"> (Click)</span>
+      </p>
     </div>
     <div className="flex items-center gap-2">
       <div className="w-8 h-8 bg-yellow-500"></div>

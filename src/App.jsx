@@ -92,7 +92,7 @@ const App = () => {
   };
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-6">
       <Navbar
         grid={grid}
         setGrid={setGrid}
@@ -102,7 +102,7 @@ const App = () => {
         setIsVisualizing={setIsVisualizing}
         resetAllStates={resetAllStates}
       />
-      <main>
+      <main className="mt-2">
         <Grid
           grid={grid}
           handleMouseDown={handleMouseDown}

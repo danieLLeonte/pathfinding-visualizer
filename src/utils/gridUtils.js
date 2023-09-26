@@ -2,7 +2,7 @@ const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
 const gridWidth = 32;
 const gridHeight = 32;
-const rows = Math.floor(windowHeight / gridHeight - 8);
+const rows = Math.floor(windowHeight / gridHeight - 6);
 const cols = Math.floor(windowWidth / gridWidth - 1);
 
 export const getStartNode = () => {
