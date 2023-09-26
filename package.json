@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://danielleonte.github.io/pathfinding-visualizer",
+  "homepage": "https://danielleonte.github.io/pathfinding-visualizer/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
