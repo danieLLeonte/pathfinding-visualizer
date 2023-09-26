@@ -33,7 +33,7 @@ const animateDijkstra = (
       newGrid[node.row][node.col] = newNode;
 
       setGrid(newGrid);
-    }, 2 * i);
+    }, 5 * i);
   }
 };
 
@@ -62,7 +62,7 @@ const animateShortestPath = (
       newGrid[node.row][node.col] = newNode;
 
       setGrid(newGrid);
-    }, 10 * i);
+    }, 15 * i);
   }
 };
 
