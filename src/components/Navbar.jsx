@@ -36,7 +36,7 @@ const ActionBar = ({
 );
 
 const Legend = () => (
-  <div className="flex justify-center gap-6 px-6">
+  <div className="justify-center gap-6 px-6 hidden lg:flex">
     <div className="flex items-center gap-2">
       <div className="w-8 h-8 bg-green-500 flex justify-center items-center">
         <BsFillRocketFill className="text-white text-xl" />
@@ -89,7 +89,7 @@ const Navbar = ({
     <>
       <nav className="flex justify-between items-center bg-gray-800 py-4 px-6">
         <a href="/" className="text-white font-bold">
-          <h1 className="text-2xl">Pathfinding Visualizer</h1>
+          <h1 className="text-2xl hidden sm:block">Pathfinding Visualizer</h1>
         </a>
         <ActionBar
           grid={grid}
